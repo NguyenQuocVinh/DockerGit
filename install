@@ -44,7 +44,7 @@ sqlplus / as sysdba
 SQL>create spfile from pfile;
 SQL>startup nomount
 SQL> CREATE DATABASE "db01"
-USER SYS IDENTIFIED BY "ptsc@123" USER SYSTEM IDENTIFIED BY "ptsc@123" 
+USER SYS IDENTIFIED BY abc123" USER SYSTEM IDENTIFIED BY abc123
 EXTENT MANAGEMENT LOCAL 
 DEFAULT TEMPORARY TABLESPACE temp UNDO TABLESPACE undotbs1 DEFAULT TABLESPACE users datafile size 500M;
 /
@@ -52,7 +52,7 @@ DEFAULT TEMPORARY TABLESPACE temp UNDO TABLESPACE undotbs1 DEFAULT TABLESPACE us
 @?/rdbms/admin/catproc.sql
 @?/rdbms/admin/utlrp.sql
 
-sqlplus	system/"ptsc@123"
+sqlplus	system/abc123
 SQL> @?/sqlplus/admin/pupbld.sql
 
 #create password file
@@ -68,4 +68,4 @@ $lsnrctl start
 docker port ol7-db11r2 1521
 0.0.0.0:49154
 # testing
-sqlplus system@10.70.39.80:49154/db01
+sqlplus system/abc123@xx.xx.xx.xx:49154/db01
