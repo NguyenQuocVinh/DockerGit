@@ -68,8 +68,4 @@ $lsnrctl start
 docker port ol7-db11r2 1521
 0.0.0.0:49154
 # testing
-# if using as this string is failed
-# sqlplus system/"ptsc@123"@10.70.39.80:49154/db01	--> failed
-sqlplus /nolog
-SQL> connect system/"ptsc@123"@10.70.39.80:49154/db01
-Connected.		
+sqlplus system@10.70.39.80:49154/db01
