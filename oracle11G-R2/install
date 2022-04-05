@@ -59,3 +59,17 @@ SQL> @?/sqlplus/admin/pupbld.sql
 $oh
 $orapwd file=orapwdb01 password=ABC entries=5 force=y
 
+#start listener
+$lsnrctl start
+
+#step4
+#config for connecting to instance db01
+#	Finding port of host for 1521 of docker
+docker port ol7-db11r2 1521
+0.0.0.0:49154
+# testing
+# if using as this string is failed
+# sqlplus system/"ptsc@123"@10.70.39.80:49154/db01	--> failed
+sqlplus /nolog
+SQL> connect system/"ptsc@123"@10.70.39.80:49154/db01
+Connected.		
