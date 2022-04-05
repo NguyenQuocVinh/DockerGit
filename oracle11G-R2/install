@@ -1,0 +1,61 @@
+#Step1
+#Create image that has:
+#	OS: Oracle Linux 7
+#	pre-install for Oracle DB: 
+#		install oracle-database-server-12cR2-preinstall, ...
+#		config sysctl.conf, ...
+docker build --force-rm=true --no-cache=true --tag oracle11g_installed .
+
+#step2
+# Create container and install oracle software on container
+# 	Container mounts host directories:
+#		/u01/app	: for software oracle
+#		/u01/oradata	: for data oracle
+#		/soft		: source of 11G.2.0.4
+#	prepare for install software oracle: 
+#		create directories 
+#		create .bash_profile
+docker run --shm-size=4g --name ol7-db11r2 -dP --hostname ol7-db11r2 --privileged=true \
+	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G/app,target=/u01/app \
+	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G/oradata,target=/u01/oradata \
+	--mount  type=bind,source=/mnt/cdromISO,target=/soft,readonly oracle11g_installed /usr/sbin/init 
+
+docker exec -d ol7-db11r2 /bin/bash -c "chown -R oracle:oinstall /u01/app"
+docker exec -d ol7-db11r2 /bin/bash -c "chown -R oracle:oinstall /u01/oradata"
+docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "cat /u01/Docker/install/oracle-env.txt >> ~/.bash_profile"
+docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oracle/product/11.2.0.4/db_1/"
+docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oraInventory/"
+docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oracle/admin/db01/adump/"
+docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/oradata/db01/"
+docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/db01/archivelog/"
+
+docker exec -it ol7-db11r2 /bin/bash
+su - oracle
+cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -noconfig -responseFile /u01/Docker/install/softonly.rsp
+
+#step3
+#Create instance db01
+docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "echo 'db01:/u01/app/oracle/product/11.2.0.4/db_1/:N' >> /etc/oratab"
+docker exec -d -u oracle ol7-db11r2 /bin/bash -c "cp /u01/Docker/install/initdb01.ora /u01/app/oracle/product/11.2.0.4/db_1/dbs/"
+docker exec -u oracle -w /home/oracle -it ol7-db11r2 /bin/bash
+. .bash_profile
+. oraenv			--> choose sid= db01 and enter
+sqlplus / as sysdba
+SQL>create spfile from pfile;
+SQL>startup nomount
+SQL> CREATE DATABASE "db01"
+USER SYS IDENTIFIED BY "ptsc@123" USER SYSTEM IDENTIFIED BY "ptsc@123" 
+EXTENT MANAGEMENT LOCAL 
+DEFAULT TEMPORARY TABLESPACE temp UNDO TABLESPACE undotbs1 DEFAULT TABLESPACE users datafile size 500M;
+/
+@?/rdbms/admin/catalog.sql
+@?/rdbms/admin/catproc.sql
+@?/rdbms/admin/utlrp.sql
+
+sqlplus	system/"ptsc@123"
+SQL> @?/sqlplus/admin/pupbld.sql
+
+#create password file
+$oh
+$orapwd file=orapwdb01 password=ABC entries=5 force=y
+
