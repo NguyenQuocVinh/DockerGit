@@ -69,3 +69,7 @@ docker port ol7-db11r2 1521
 0.0.0.0:49154
 # testing
 sqlplus system/abc123@xx.xx.xx.xx:49154/db01
+
+#step 5
+# dong goi lai luon
+docker commit ol7-db11r2 oracle11g_installed:finished
