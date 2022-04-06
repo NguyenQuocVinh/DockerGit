@@ -11,7 +11,6 @@ RUN echo "oracle:abc123" | chpasswd
 ADD sysctl.conf /etc/sysctl.conf
 RUN echo "oracle soft stack 10240" >> /etc/security/limits.conf
 
-ADD db_install.rsp /u01/Docker/install/db_install.rsp
 ADD softonly.rsp /u01/Docker/install/softonly.rsp
 ADD install /u01/Docker/install/install
 ADD initdb01.ora /u01/Docker/install/initdb01.ora
