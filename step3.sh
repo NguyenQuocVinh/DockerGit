@@ -13,13 +13,12 @@ docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo $_x >> /
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'USER SYS IDENTIFIED BY abc123 USER SYSTEM IDENTIFIED BY abc123' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'EXTENT MANAGEMENT LOCAL' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'DEFAULT TEMPORARY TABLESPACE temp UNDO TABLESPACE undotbs1 DEFAULT TABLESPACE users datafile size 500M;' >> /tmp/create_instance.txt"
-docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '/' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '@?/rdbms/admin/catalog.sql' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '@?/rdbms/admin/catproc.sql' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '@?/rdbms/admin/utlrp.sql' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'exit' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'EOF' >> /tmp/create_instance.txt"
-docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "sh /tmp/create_instance.txt"
+docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "sh /tmp/create_instance.txt > /tmp/create_instance1.log"
 
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'export ORAENV_ASK=NO' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '. .oraenv' >> /tmp/create_instance.txt"
@@ -27,7 +26,7 @@ docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'sqlplus
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '@?/sqlplus/admin/pupbld.sql' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'EOF' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'exit' >> /tmp/create_instance.txt"
-docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "sh /tmp/create_instance.txt"
+docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "sh /tmp/create_instance.txt > /tmp/create_instance2.log"
 
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "export ORAENV_ASK=NO && . .oraenv && orapwd file=orapwdb01 password=ABC entries=5 force=y"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "export ORAENV_ASK=NO && . .oraenv && lsnrctl start"
