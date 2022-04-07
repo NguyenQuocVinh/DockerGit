@@ -7,7 +7,7 @@
 *.db_domain=''
 *.db_name='db01'
 *.db_recovery_file_dest_size=4G
-*.db_recovery_file_dest='/u01/oradata/flash_recovery_area/DB01/archivelog'
+*.db_recovery_file_dest='/u01/oradata/flash_recovery_area/archivelog'
 *.diagnostic_dest='/u01/app/oracle'
 db_create_file_dest = /u01/oradata/
 
