@@ -26,7 +26,7 @@ docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'sqlplus
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '@?/sqlplus/admin/pupbld.sql' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'EOF' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'exit' >> /tmp/create_instance.txt"
-docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "sh /tmp/create_instance.txt > /tmp/create_instance2.log"
+docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c ". .bash_profile & sh /tmp/create_instance.txt > /tmp/create_instance2.log"
 
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "export ORAENV_ASK=NO && . .oraenv && orapwd file=orapwdb01 password=ABC entries=5 force=y"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "export ORAENV_ASK=NO && . .oraenv && lsnrctl start"
