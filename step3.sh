@@ -21,7 +21,7 @@ docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'EOF' >>
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "sh /tmp/create_instance.txt > /tmp/create_instance1.log"
 
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'export ORAENV_ASK=NO' >> /tmp/create_instance.txt"
-docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '. .oraenv' >> /tmp/create_instance.txt"
+docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '. oraenv' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'sqlplus system/abc123 <<EOF' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '@?/sqlplus/admin/pupbld.sql' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'EOF' >> /tmp/create_instance.txt"
