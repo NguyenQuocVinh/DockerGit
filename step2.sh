@@ -23,7 +23,7 @@ docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "cat /u01/Docke
 docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oracle/product/11.2.0.4/db_1/"
 docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oraInventory/"
 docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oracle/admin/adump/"
-docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/oradata/DB01/"
+#docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/oradata/DB01/"
 docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/archivelog/"
 
 # INSTALL SOFTWARE ORACLE
