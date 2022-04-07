@@ -2,6 +2,7 @@
 *.audit_file_dest='/u01/app/oracle/admin/adump'
 *.audit_trail='db'
 *.compatible='11.2.0.4'
+# control nay duoc ghi trong thu muc $ORACLE_HOME/dbs/
 *.control_files='control01_DB01.ctl'
 *.db_block_size=8192
 *.db_domain=''
