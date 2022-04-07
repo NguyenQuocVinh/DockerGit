@@ -8,9 +8,11 @@ export PATH=/usr/sbin:$PATH:$ORACLE_HOME/bin
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
 export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
 
+umask 022
+
 alias ob='cd $ORACLE_BASE'
 alias oh='cd $ORACLE_HOME'
 alias tns='cd $ORACLE_HOME/network/admin'
 alias envo='env | grep ORACLE'
-
-umask 022
+alias rsqlplus='rlwrap sqlplus /nolog'
+alias rrman='rlwrap rman'
