@@ -26,7 +26,6 @@ docker port ol7-db11r2 1521
 sqlplus system/abc123@xx.xx.xx.xx:49154/db01
 
 #step 5
-
 # create image from container.
 # name of container must be fit to step 2
 docker commit ol7-db11r2 oracle11g_installed:finished
