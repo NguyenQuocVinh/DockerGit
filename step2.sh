@@ -1,10 +1,21 @@
 # name of image must be same in step1.sh
 # name of container must be same in step3.sh
 # hostname is the same in other steps
+# Container mounts host directories:
+#		/u01/app	: for software oracle
+#		/u01/oradata	: for data oracle
+#		/soft		: source of 11G.2.0.4
+# prepare for install software oracle: 
+#	create directories on host 	/u01/Docker/DockerData/OracleLinux11G/app
+#					/u01/Docker/DockerData/OracleLinux11G/oradata
+# CREATE COTAINER
+# EACH CONTAINER HAS TWO DIRS ITSELF.
+#REMEMBER EDITING BEFORE RUN THIS COMMAND
 docker run --shm-size=4g --name ol7-db11r2 -dP --hostname ol7-db11r2 --privileged=true \
 	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G/app,target=/u01/app \
 	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G/oradata,target=/u01/oradata \
 	--mount  type=bind,source=/mnt/cdromISO,target=/soft,readonly oracle11g_installed /usr/sbin/init
+#REMEMBER EDITING BEFORE RUN THIS COMMAND
 
 docker exec -d ol7-db11r2 /bin/bash -c "chown -R oracle:oinstall /u01/app"
 docker exec -d ol7-db11r2 /bin/bash -c "chown -R oracle:oinstall /u01/oradata"
