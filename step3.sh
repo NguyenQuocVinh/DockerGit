@@ -29,4 +29,6 @@ docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'EOF' >>
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c ". .bash_profile && sh /tmp/create_instance2.txt > /tmp/create_instance2.log"
 
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "export ORAENV_ASK=NO && . oraenv && orapwd file=orapwdb01 password=ABC entries=5 force=y"
+
+# lenh nay nen chay rieng de kiem tra
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "export ORAENV_ASK=NO && . oraenv && lsnrctl start"
