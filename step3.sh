@@ -4,7 +4,7 @@ docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'db01:/u
 docker exec -d -u oracle $_container /bin/bash -c "cp /u01/Docker/install/initdb01.ora /u01/app/oracle/product/11.2.0.4/db_1/dbs/"
 
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'export ORAENV_ASK=NO' >> /tmp/create_instance.txt"
-docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '. .oraenv' >> /tmp/create_instance.txt"
+docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo '. oraenv' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'sqlplus / as sysdba <<EOF' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'create spfile from pfile;' >> /tmp/create_instance.txt"
 docker exec -d -u oracle -w /home/oracle $_container /bin/bash -c "echo 'startup nomount' >> /tmp/create_instance.txt"
