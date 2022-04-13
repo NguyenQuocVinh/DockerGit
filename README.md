@@ -1,7 +1,7 @@
 # Create docker with Oracle db 11.2.0.4 on Oracle Linux 7 
 # Reference on https://github.com/wscherphof/oracle-12c(wscherphof.tar)
 
-# In install file, there are 4 steps:
+#  In install file, there are 4 steps:
 # Step1
 #Create image that has:
 #OS: Oracle Linux 7
