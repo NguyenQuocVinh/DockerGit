@@ -18,5 +18,3 @@
   
 # Step 5
 ### create image from container.
-### name of container must be fit to step 2
-docker commit ol7-db11r2 oracle11g_installed:finished
