@@ -13,7 +13,6 @@ sh step2.sh
 #step3
 #Create instance db01 in container
 sh step3.sh
-# se dua cac lenh trong step3 vo scrip luon
 
 #STEP 4 & 5 RUN IN TERMINAL
 
