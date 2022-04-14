@@ -1,5 +1,9 @@
+_contain_name=$1
+
 # name of image must be same in step1.sh
-# name of container must be same in step3.sh
+# _contain_name variable is container name. 
+# 
+# that must be same in step3.sh
 # hostname is the same in other steps
 # Container mounts host directories:
 #		/u01/app	: for software oracle
@@ -11,24 +15,23 @@
 # CREATE COTAINER
 # EACH CONTAINER HAS TWO DIRS ITSELF.
 #REMEMBER EDITING BEFORE RUN THIS COMMAND
-docker run --shm-size=4g --name ol7-db11r2 -dP --hostname ol7-db11r2 --privileged=true \
-	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G/app,target=/u01/app \
-	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G/oradata,target=/u01/oradata \
+docker run --shm-size=4g --name $_contain_name -dP --hostname ol7-db11r2 --privileged=true \
+	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G_instance/app,target=/u01/app \
+	--mount  type=bind,source=/u01/Docker/DockerData/OracleLinux11G_instance/oradata,target=/u01/oradata \
 	--mount  type=bind,source=/mnt/cdromISO,target=/soft,readonly oracle11g_installed /usr/sbin/init
 #REMEMBER EDITING BEFORE RUN THIS COMMAND
 
-docker exec -d ol7-db11r2 /bin/bash -c "chown -R oracle:oinstall /u01/app"
-docker exec -d ol7-db11r2 /bin/bash -c "chown -R oracle:oinstall /u01/oradata"
-docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "cat /u01/Docker/install/oracle-env.txt >> ~/.bash_profile"
-docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oracle/product/11.2.0.4/db_1/"
-docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oraInventory/"
-docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/app/oracle/admin/adump/"
-#docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/oradata/DB01/"
-docker exec -d -u oracle -w /home/oracle ol7-db11r2 /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/archivelog/"
+docker exec -d $_contain_name /bin/bash -c "chown -R oracle:oinstall /u01/app"
+docker exec -d $_contain_name /bin/bash -c "chown -R oracle:oinstall /u01/oradata"
+docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "cat /u01/Docker/install/oracle-env.txt >> ~/.bash_profile"
+docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oracle/product/11.2.0.4/db_1/"
+docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oraInventory/"
+docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oracle/admin/adump/"
+docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/archivelog/"
 
 # INSTALL SOFTWARE ORACLE
 # RUNING THIS PART IN TERMINAL
-#docker exec -it ol7-db11r2 /bin/bash
+#docker exec -it <_contain_name> /bin/bash
 #su - oracle
-#cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -noconfig -responseFile /u01/Docker/install/softonly.rsp
+#cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -responseFile /u01/Docker/install/softinstance.rsp
 # RUNING THIS PART IN TERMINAL
