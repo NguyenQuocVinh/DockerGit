@@ -35,6 +35,9 @@
 # Step2 (step2_V2.sh)
   ### Create container, install oracle software and create instance of db.
 
+# Step3
+    N/A
+
 # Step4
   ### Config for connecting to instance db01
   
