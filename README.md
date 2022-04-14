@@ -6,6 +6,7 @@
 ### Version 2: there are 4 steps. It has no step3
 #----------------------------------------------------------
 
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # VERSION 1 (Detailed in install file)
 # Step1 (step1.sh)
   ### Create image that has:
@@ -24,6 +25,7 @@
 # Step 5
 ### create image from container.
 
+#+++++++++++++++++++++++++++++++++++++++++++++++
 # VERSION 2 (Detailed in install_V2 file)
 # Step1 (step1_V2.sh)
   ### Create image that has:
