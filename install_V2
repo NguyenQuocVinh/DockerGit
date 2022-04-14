@@ -4,7 +4,7 @@
 #	pre-install for Oracle DB: 
 #		install oracle-database-server-12cR2-preinstall, ...
 #		config sysctl.conf, ...
-sh step1.sh
+sh step1_V2.sh
 
 #step2
 # Create container 
@@ -12,7 +12,7 @@ sh step1.sh
 # Create instance db01 in container
 
 # passing one parameter to step2.sh. 
-sh step2.sh <container_name>
+sh step2_V2.sh <container_name>
 
 #Step3
   # N/A
