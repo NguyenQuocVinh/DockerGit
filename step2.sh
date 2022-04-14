@@ -32,10 +32,10 @@ docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oraInventory/"
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oracle/admin/adump/"
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/archivelog/"
+#docker exec -it $_contain_name /bin/bash
 
 # INSTALL SOFTWARE ORACLE
 # RUNING THIS PART IN TERMINAL
-#docker exec -it <_contain_name> /bin/bash
 #su - oracle
 #cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -responseFile /u01/Docker/install/softinstance.rsp
 # RUNING THIS PART IN TERMINAL
