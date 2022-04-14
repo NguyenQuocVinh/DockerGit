@@ -1,0 +1,33 @@
+#Step1
+#Create image that has:
+#	OS: Oracle Linux 7
+#	pre-install for Oracle DB: 
+#		install oracle-database-server-12cR2-preinstall, ...
+#		config sysctl.conf, ...
+sh step1.sh
+
+#step2
+# Create container 
+# Install oracle software 11G R2 on container
+# Create instance db01 in container
+
+# passing one parameter to step2.sh. 
+sh step2.sh <container_name>
+
+#Step3
+  # N/A
+
+#STEP 4 & 5 RUN IN TERMINAL
+
+#step4
+#config for connecting to instance db01
+#	Finding port of host for 1521 of docker
+docker port ol7-db11r2 1521
+0.0.0.0:49154
+# testing
+sqlplus system/abc123@xx.xx.xx.xx:49154/db01
+
+#step 5
+# create image from container.
+# name of container must be fit to step 2
+docker commit ol7-db11r2 oracle11g_installed:finished
