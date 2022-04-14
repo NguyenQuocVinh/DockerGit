@@ -32,10 +32,16 @@ docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oraInventory/"
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oracle/admin/adump/"
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/archivelog/"
+#docker exec -it $_contain_name /bin/bash
 
 # INSTALL SOFTWARE ORACLE
 # RUNING THIS PART IN TERMINAL
-#docker exec -it <_contain_name> /bin/bash
+
 #su - oracle
 #cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -responseFile /u01/Docker/install/SoftAndInstance.rsp
 # RUNING THIS PART IN TERMINAL
+
+#Notice:
+#	Sau khi tạo xong instance --> không hiện lên 2 script để root chạy. Phải chạy 2 script sau:
+#	/u01/app/oracle/product/11.2.0.4/db_1/root.sh	(tạo file /etc/oratab, ...)
+#	/u01/app/oraInventory/orainstRoot.sh
