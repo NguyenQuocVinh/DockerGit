@@ -33,5 +33,5 @@ docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /
 # RUNING THIS PART IN TERMINAL
 #docker exec -it <_contain_name> /bin/bash
 #su - oracle
-#cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -responseFile /u01/Docker/install/softinstance.rsp
+#cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -responseFile /u01/Docker/install/SoftAndInstance.rsp
 # RUNING THIS PART IN TERMINAL
