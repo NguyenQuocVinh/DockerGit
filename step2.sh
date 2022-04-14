@@ -1,3 +1,7 @@
+#
+#run step1.sh :
+#step1.sh <container name>
+
 _contain_name=$1
 
 # name of image must be same in step1.sh
