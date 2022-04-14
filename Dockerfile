@@ -16,6 +16,7 @@ RUN echo "oracle soft stack 10240" >> /etc/security/limits.conf
 
 # rsp file for install software 11G
 ADD softonly.rsp /u01/Docker/install/softonly.rsp
+ADD softonly.rsp /u01/Docker/install/SoftAndInstance.rsp
 #ADD install /u01/Docker/install/install
 
 # init file for instance 11G
