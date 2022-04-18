@@ -1,6 +1,6 @@
 #
 #run step1.sh :
-#step1.sh <container name>
+#step2.sh <container name>
 
 _contain_name=$1
 
