@@ -32,7 +32,7 @@ docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oraInventory/"
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/app/oracle/admin/adump/"
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/archivelog/"
-#docker exec -it $_contain_name /bin/bash
+docker exec -it $_contain_name /bin/bash
 
 # INSTALL SOFTWARE ORACLE
 # RUNING THIS PART IN TERMINAL
