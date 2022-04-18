@@ -34,8 +34,15 @@ docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /
 docker exec -d -u oracle -w /home/oracle $_contain_name /bin/bash -c "mkdir -p /u01/oradata/flash_recovery_area/archivelog/"
 docker exec -it $_contain_name /bin/bash
 
+#------------------------------------------------------------
 # INSTALL SOFTWARE ORACLE
 # RUNING THIS PART IN TERMINAL
 #su - oracle
+# 
 #cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignoreSysPrereqs -ignorePrereq -silent -responseFile /u01/Docker/install/softinstance.rsp
+
+#OR
+
+#all parameters of response put in this command
+#cd /u01/Docker/install/ && /soft/runInstaller -showProgress -ignorePrereq -silent -responseFile /soft/response/db_install.rsp oracle.install.option=INSTALL_DB_SWONLY ORACLE_HOSTNAME=$ORACLE_HOSTNAME UNIX_GROUP_NAME=oinstall INVENTORY_LOCATION=$ORACLE_INVENTORY SELECTED_LANGUAGES=en ORACLE_HOME=$ORACLE_HOME ORACLE_BASE=$ORACLE_BASE oracle.install.db.InstallEdition=EE oracle.install.db.DBA_GROUP=dba oracle.install.db.OPER_GROUP=oper SECURITY_UPDATES_VIA_MYORACLESUPPORT=false  DECLINE_SECURITY_UPDATES=true
 # RUNING THIS PART IN TERMINAL
