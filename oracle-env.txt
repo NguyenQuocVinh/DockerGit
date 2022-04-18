@@ -3,6 +3,7 @@ export ORACLE_HOSTNAME=ol7-db11r2
 export ORACLE_UNQNAME=db01
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/11.2.0.4/db_1
+export ORACLE_INVENTORY=/u01/app/oraInventory
 export ORACLE_SID=db01
 export PATH=/usr/sbin:$PATH:$ORACLE_HOME/bin
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
